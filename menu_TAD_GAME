@@ -102,7 +102,7 @@ menuItem.Name = "Menu"
 menuItem.Parent = backpack
 
 -- Thêm icon thay cho tên
-menuItem.TextureId = "rbxthumb://type=Asset&id=488453319&w=150&h=150"
+menuItem.TextureId = "rbxthumb://type=Asset&id=126127448743957&w=150&h=150"
 
 -- Tạo mô hình item Menu
 local menuModel = Instance.new("Part")
