@@ -15,7 +15,7 @@ local textColor = Color3.fromRGB(255, 255, 255) -- Trắng
 
 -- Dữ liệu nút
 local buttonsData = {
-    {Name = "dead_rails", Script = function() loadstring(game:HttpGet("https://raw.githubusercontent.com/HAPPY-script/TICKEN_ZOMBIE_STORIES/refs/heads/main/TICKEN_ZOMBIE_STORIES"))() end},
+    {Name = "zombie_stories", Script = function() loadstring(game:HttpGet("https://raw.githubusercontent.com/HAPPY-script/TICKEN_ZOMBIE_STORIES/refs/heads/main/TICKEN_ZOMBIE_STORIES"))() end},
     {Name = "dead_rails", Script = function() loadstring(game:HttpGet("https://raw.githubusercontent.com/HAPPY-script/DEAD_RAILS/refs/heads/main/DEAD_RAILS"))() end}
 }
 
