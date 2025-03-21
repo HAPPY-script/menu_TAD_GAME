@@ -9,9 +9,9 @@ local screenGui = Instance.new("ScreenGui", starterGui)
 screenGui.ResetOnSpawn = false
 
 -- Tông màu
-local backgroundColor = Color3.fromRGB(75, 0, 130) -- Tím đậm
-local buttonColor = Color3.fromRGB(138, 43, 226) -- Tím nhạt
-local textColor = Color3.fromRGB(255, 255, 255) -- Trắng
+local backgroundColor = Color3.fromRGB(40, 0, 0) -- Đỏ đậm bí ẩn
+local buttonColor = Color3.fromRGB(200, 0, 0) -- Đỏ tươi mạnh mẽ
+local textColor = Color3.fromRGB(255, 200, 200) -- Trắng pha hồng nhẹ
 
 -- Dữ liệu nút
 local buttonsData = {
