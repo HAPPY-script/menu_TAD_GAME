@@ -1,0 +1,143 @@
+local UIS = game:GetService("UserInputService")
+local Players = game:GetService("Players")
+local player = Players.LocalPlayer
+local starterGui = player:WaitForChild("PlayerGui")
+local backpack = player:WaitForChild("Backpack")
+
+-- Tạo GUI chính
+local screenGui = Instance.new("ScreenGui", starterGui)
+screenGui.ResetOnSpawn = false
+
+-- Tông màu
+local backgroundColor = Color3.fromRGB(75, 0, 130) -- Tím đậm
+local buttonColor = Color3.fromRGB(138, 43, 226) -- Tím nhạt
+local textColor = Color3.fromRGB(255, 255, 255) -- Trắng
+
+-- Dữ liệu nút
+local buttonsData = {
+    {Name = "dead_rails", Script = function() loadstring(game:HttpGet("https://raw.githubusercontent.com/HAPPY-script/DEAD_RAILS/refs/heads/main/DEAD_RAILS"))() end},
+    {Name = "dead_rails", Script = function() loadstring(game:HttpGet("https://raw.githubusercontent.com/HAPPY-script/DEAD_RAILS/refs/heads/main/DEAD_RAILS"))() end}
+}
+
+-- Kích thước và vị trí mặc định
+local menuWidth, menuHeight = 400, 300
+local menuPosX, menuPosY = 100, 100
+
+-- Frame Menu chính
+local menuFrame = Instance.new("Frame", screenGui)
+menuFrame.Size = UDim2.new(0, menuWidth, 0, menuHeight)
+menuFrame.Position = UDim2.new(0, menuPosX, 0, menuPosY)
+menuFrame.BackgroundColor3 = backgroundColor
+menuFrame.Visible = false -- Ban đầu ẩn
+menuFrame.Active = true
+menuFrame.Draggable = true
+
+local uiCorner = Instance.new("UICorner", menuFrame)
+uiCorner.CornerRadius = UDim.new(0.1, 0)
+
+-- ScrollFrame cho nút
+local buttonContainer = Instance.new("ScrollingFrame", menuFrame)
+buttonContainer.Size = UDim2.new(1, -20, 1, -80)
+buttonContainer.Position = UDim2.new(0, 10, 0, 60)
+buttonContainer.BackgroundTransparency = 1
+buttonContainer.ScrollBarThickness = 5
+
+local layout = Instance.new("UIGridLayout", buttonContainer)
+layout.CellSize = UDim2.new(0, 120, 0, 40)
+layout.CellPadding = UDim2.new(0, 10, 0, 10)
+
+-- Thanh tìm kiếm
+local searchBox = Instance.new("TextBox", menuFrame)
+searchBox.Size = UDim2.new(0.8, 0, 0, 30)
+searchBox.Position = UDim2.new(0.1, 0, 0, 10)
+searchBox.PlaceholderText = "Search..."
+searchBox.Text = ""
+searchBox.TextColor3 = textColor
+searchBox.BackgroundColor3 = buttonColor
+searchBox.Font = Enum.Font.SourceSans
+searchBox.TextScaled = true
+
+local searchCorner = Instance.new("UICorner", searchBox)
+searchCorner.CornerRadius = UDim.new(0.1, 0)
+
+-- Thêm nút vào menu
+local function addButton(name, scriptFunc)
+    local button = Instance.new("TextButton", buttonContainer)
+    button.Size = UDim2.new(0, 120, 0, 40)
+    button.Text = name
+    button.BackgroundColor3 = buttonColor
+    button.TextColor3 = textColor
+    button.Font = Enum.Font.SourceSansBold
+    button.TextScaled = true
+
+    button.MouseButton1Click:Connect(function()
+        scriptFunc()
+    end)
+end
+
+-- Cập nhật nút theo tìm kiếm
+local function updateButtons()
+    for _, button in ipairs(buttonContainer:GetChildren()) do
+        if button:IsA("TextButton") then
+            button:Destroy()
+        end
+    end
+
+    local searchText = searchBox.Text:lower()
+    for _, buttonData in ipairs(buttonsData) do
+        if buttonData.Name:lower():find(searchText) then
+            addButton(buttonData.Name, buttonData.Script)
+        end
+    end
+end
+
+searchBox.Changed:Connect(updateButtons)
+
+-- Ban đầu tải các nút
+updateButtons()
+
+-- Tạo item Menu
+local menuItem = Instance.new("Tool")
+menuItem.Name = "Menu"
+menuItem.Parent = backpack
+
+-- Thêm icon thay cho tên
+menuItem.TextureId = "rbxthumb://type=Asset&id=488453319&w=150&h=150"
+
+-- Tạo mô hình item Menu
+local menuModel = Instance.new("Part")
+menuModel.Size = Vector3.new(1, 1, 1)
+menuModel.Shape = Enum.PartType.Block
+menuModel.Color = Color3.fromRGB(75, 0, 130) -- Tím đậm
+menuModel.Name = "Handle"
+menuModel.Anchored = false
+menuModel.CanCollide = false
+menuModel.Parent = menuItem
+
+-- Tạo mô hình cầm tay giống điện thoại
+local phoneModel = Instance.new("Part")
+phoneModel.Size = Vector3.new(0.5, 1.5, 0.2)
+phoneModel.Color = Color3.fromRGB(75, 0, 130)
+phoneModel.Shape = Enum.PartType.Cylinder
+phoneModel.Name = "Handle"
+phoneModel.Anchored = false
+phoneModel.CanCollide = false
+phoneModel.Parent = menuItem
+
+local phoneLabel = Instance.new("TextLabel", phoneModel)
+phoneLabel.Size = UDim2.new(1, 0, 0.1, 0)
+phoneLabel.Position = UDim2.new(0, 0, 0.9, 0)
+phoneLabel.Text = "HAPPY"
+phoneLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
+phoneLabel.BackgroundTransparency = 1
+phoneLabel.Font = Enum.Font.SourceSansBold
+phoneLabel.TextScaled = true
+
+-- Hiện/ẩn menu khi cầm item Menu
+menuItem.Equipped:Connect(function()
+    menuFrame.Visible = true
+end)
+
+menuItem.Unequipped:Connect(function()
+    menuFrame.Visible = false
+end)
