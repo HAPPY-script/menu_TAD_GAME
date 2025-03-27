@@ -98,7 +98,7 @@ updateButtons()
 
 -- Tạo item Menu
 local menuItem = Instance.new("Tool")
-menuItem.Name = "Menu"
+menuItem.Name = "Menu_game"
 menuItem.Parent = backpack
 
 -- Thêm icon thay cho tên
