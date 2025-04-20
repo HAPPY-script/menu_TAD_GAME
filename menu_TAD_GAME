@@ -15,7 +15,7 @@ local textColor = Color3.fromRGB(255, 200, 200) -- Trắng pha hồng nhẹ
 
 -- Dữ liệu nút
 local buttonsData = {
-    {Name = "zombie_stories", Script = function() loadstring(game:HttpGet("https://raw.githubusercontent.com/HAPPY-script/BLOX_FRUIT/refs/heads/main/BLOX_FRUIT.lua"))() end},
+    {Name = "blox_fruit", Script = function() loadstring(game:HttpGet("https://raw.githubusercontent.com/HAPPY-script/BLOX_FRUIT/refs/heads/main/BLOX_FRUIT.lua"))() end},
     {Name = "zombie_stories", Script = function() loadstring(game:HttpGet("https://raw.githubusercontent.com/HAPPY-script/TICKEN_ZOMBIE_STORIES/refs/heads/main/TICKEN_ZOMBIE_STORIES"))() end},
     {Name = "dead_rails", Script = function() loadstring(game:HttpGet("https://raw.githubusercontent.com/HAPPY-script/DEAD_RAILS/refs/heads/main/DEAD_RAILS"))() end},
     {Name = "Final Stand", Script = function() loadstring(game:HttpGet("https://raw.githubusercontent.com/HAPPY-script/Final_Stand/refs/heads/main/Final_Stand"))() end}
