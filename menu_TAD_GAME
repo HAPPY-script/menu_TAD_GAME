@@ -18,7 +18,8 @@ local buttonsData = {
     {Name = "blox_fruit", Script = function() loadstring(game:HttpGet("https://raw.githubusercontent.com/HAPPY-script/BLOX_FRUIT/refs/heads/main/BLOX_FRUIT.lua"))() end},
     {Name = "zombie_stories", Script = function() loadstring(game:HttpGet("https://raw.githubusercontent.com/HAPPY-script/TICKEN_ZOMBIE_STORIES/refs/heads/main/TICKEN_ZOMBIE_STORIES"))() end},
     {Name = "dead_rails", Script = function() loadstring(game:HttpGet("https://raw.githubusercontent.com/HAPPY-script/DEAD_RAILS/refs/heads/main/DEAD_RAILS"))() end},
-    {Name = "Final Stand", Script = function() loadstring(game:HttpGet("https://raw.githubusercontent.com/HAPPY-script/Final_Stand/refs/heads/main/Final_Stand"))() end}
+    {Name = "Final Stand", Script = function() loadstring(game:HttpGet("https://raw.githubusercontent.com/HAPPY-script/Final_Stand/refs/heads/main/Final_Stand"))() end},
+    {Name = "MM2", Script = function() loadstring(game:HttpGet("https://raw.githubusercontent.com/HAPPY-script/Muder-Mystery-2/refs/heads/main/Muder%20Mystery%202"))() end}
 }
 
 -- Kích thước và vị trí mặc định
